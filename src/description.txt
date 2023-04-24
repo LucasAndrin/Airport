@@ -1,0 +1,40 @@
+Objetivo: Simular padrões de aterrissagem e decolagem em um aeroporto;
+
+Em um aeroporto existem duas pistas que podem ser usadas para decolagem e aterrissagem de aviões, porém nunca simultaneamente.
+A cada unidade de tempo de 0 a 2 aviões podem integrar-se a fila de decolagem;
+A cada unidade de tempo de 0 a 2 aviões podem integrar-se a fila de aterrissagem;
+
+A cada unidade de tempo cada pista pode ser usada para um pouso e uma decolagem; !IMPORTANTE
+
+Aviões: {
+    Decolando: {ID: Par}
+    Aterrisando : {
+        ID: Ímpar
+        Gas: Integer
+    }
+}
+
+Caso alguma aeronave tenha falta de combustível, esta terá prioridade em aterrisar.
+
+A cada unidade de tempo, assuma que os aviões entrem nas filas antes que aterrisagens e decolagens ocorram.
+
+Não permitir o crescimento excessivo de filas de aterrissagem ou decolagem.
+
+Coloque os aviões que chegam no final das filas, sem que seja permitido reordenação.
+
+A cada unidade de tempo mostrar:
+
+a) O conteúdo de cada fila;
+b) O tempo médio de espera para decolagem; TODO!!!!!!!!
+c) O tempo médio de espera para aterrissagem; TODO!!!!!!!!
+d) O número de aviões que aterrissam de reserva de combustível.
+
+Os itens b e c devem ser calculados para os aviões que já decolaram ou pousaram,
+respectivamente. A saída do programa deve ser autoexplicativa e fácil de entender.
+A entrada pode ser criada manualmente, ou utilizar um gerador de números aleatórios.
+
+Para cada unidade de tempo, a entrada deve ter as seguintes informações:
+
+a) Número de aviões (zero a dois) chegando às filas de aterrissagem com respectivas
+reservas de combustível (de 1 a 20 unidades de tempo);
+b) Número de aviões (zero a dois) chegando às filas de decolagem.
