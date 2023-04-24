@@ -1,7 +1,5 @@
 package lists;
 
-import Models.Plane;
-
 public class QueueList {
 
     private Knot start;
@@ -24,12 +22,12 @@ public class QueueList {
         return getLength() == getLimit();
     }
 
-    public boolean add(Plane plane) {
+    public boolean add(Object object) {
         if (isFull()) {
             return false;
         }
 
-        Knot newKnot = new Knot(plane);
+        Knot newKnot = new Knot(object);
         if (isEmpty()) {
             setStart(newKnot);
             setEnd(newKnot);

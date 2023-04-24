@@ -83,10 +83,11 @@ public class Airport {
         Knot trackLessFuel = aux;
 
         while (aux != null) {
-            Plane plane = aux.getPlane();
+            Plane plane = (Plane) aux.getObject();
             Knot next = aux.getNext();
             if (next != null) {
-                if (plane.getGas() <= next.getPlane().getGas()) {
+                Plane nextPlane = (Plane) next.getObject();
+                if (plane.getGas() <= nextPlane.getGas()) {
                     trackLessFuel = aux;
                 } else {
                     trackLessFuel = next;
@@ -96,7 +97,7 @@ public class Airport {
         }
 
         if (trackLessFuel != null) {
-            Plane planeLessFuel = trackLessFuel.getPlane();
+            Plane planeLessFuel = (Plane) trackLessFuel.getObject();
             if (planeLessFuel.getGas() < 10 || track.getTakingOff().getLength() == 0) {
                 System.out.println(trackId + "ª Pista está pousando o avião: " + planeLessFuel);
                 landing.removeObj(trackLessFuel);
@@ -111,7 +112,7 @@ public class Airport {
         QueueList takingOff = track.getTakingOff();
         Knot start = takingOff.getStart();
         if (start != null) {
-            System.out.println(trackId + "º Pista está decolando o avião: " + start.getPlane());
+            System.out.println(trackId + "º Pista está decolando o avião: " + start.getObject());
             takingOff.remove();
         }
     }
@@ -119,7 +120,7 @@ public class Airport {
     public void decrementGas(Track track) {
         Knot aux = track.getLanding().getStart();
         while (aux != null) {
-            Plane plane = aux.getPlane();
+            Plane plane = (Plane) aux.getObject();
             plane.setGas(plane.getGas() - 1);
             if (plane.getGas() == 0) {
                 System.out.println("AVIÃO " + plane.getId() + " CAINDO!!");

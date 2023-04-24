@@ -1,23 +1,21 @@
 package lists;
 
-import Models.Plane;
-
 public class Knot {
 
-    private Plane plane;
+    private Object object;
 
     private Knot next;
 
-    public Knot(Plane plane) {
-        setPlane(plane);
+    public Knot(Object object) {
+        setObject(object);
     }
 
-    public Plane getPlane() {
-        return plane;
+    public Object getObject() {
+        return object;
     }
 
-    public void setPlane(Plane plane) {
-        this.plane = plane;
+    public void setObject(Object object) {
+        this.object = object;
     }
 
     public Knot getNext() {
@@ -31,7 +29,7 @@ public class Knot {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("lists.Knot{");
-        sb.append("obj=").append(plane);
+        sb.append("object=").append(object);
         sb.append('}');
         return sb.toString();
     }
