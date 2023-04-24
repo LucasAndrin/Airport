@@ -20,7 +20,7 @@ public class Main {
 
             System.out.println("Aviões adicionados na fila de aterrisagem: " + landingQueue);
             for (int i = 0; i < landingQueue; i++) {
-                Plane plane = airport.addPlaneLanding(random.nextInt(1, 20));
+                Plane plane = airport.addPlaneLanding(random.nextInt(1, 21));
                 System.out.println("    " + plane);
             }
 
