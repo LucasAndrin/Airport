@@ -123,7 +123,7 @@ public class QueueList {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("QueueList{");
+        final StringBuilder sb = new StringBuilder("QueueList {");
         sb.append("start=").append(start);
         sb.append(", end=").append(end);
         sb.append(", limit=").append(limit);
@@ -133,7 +133,7 @@ public class QueueList {
     }
 
     public String toStringValues() {
-        final StringBuilder sb = new StringBuilder("QueueList{");
+        final StringBuilder sb = new StringBuilder("QueueList {");
         Knot aux = getStart();
         boolean first = true;
         while (aux != null) {

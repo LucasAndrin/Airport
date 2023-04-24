@@ -28,10 +28,10 @@ public class Track {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Pista {\n");
-        sb.append("    fila de pouso = ").append(landing.toStringValues());
-        sb.append(",\n    fila de decolagem = ").append(takingOff.toStringValues());
-        sb.append("\n}");
+        final StringBuilder sb = new StringBuilder("Pista {");
+        sb.append("pouso = ").append(landing.toStringValues());
+        sb.append(", decolagem = ").append(takingOff.toStringValues());
+        sb.append("}");
         return sb.toString();
     }
 }

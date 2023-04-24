@@ -10,7 +10,7 @@ public class Main {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite true para continuar o programa e false para parar: ");
+        System.out.print("Digite true para continuar o programa e false para parar:");
         boolean response = scanner.nextBoolean();
         while(response) {
             System.out.println("###################### TEMPO " + airport.time + " ######################");
@@ -29,20 +29,39 @@ public class Main {
                 Plane plane = airport.addPlaneTakingOff();
                 System.out.println("    " + plane);
             }
+            System.out.println();
 
+            System.out.println("###################### RESULTADO ######################");
             System.out.println("Primeira " + airport.getPrimaryTrack());
             System.out.println("Segunda " + airport.getSecondaryTrack());
             System.out.println();
 
-            System.out.println("##################### Gerenciando Aeronaves #####################");
+            System.out.println("################ GERENCIANDO AEROPORTO ################");
             airport.manageAirport();
-            System.out.println("Primeira " + airport.getPrimaryTrack());
-            System.out.println("Segunda " + airport.getSecondaryTrack());
             System.out.println();
 
+            System.out.println("###################### RESULTADO ######################");
+            System.out.println("Primeira " + airport.getPrimaryTrack());
+            System.out.println("Segunda " + airport.getSecondaryTrack());
 
-            System.out.println("########### ?????? ###########");
-            System.out.println("Digite true para continuar o programa e false para parar...");
+            float landAvg = 0.0f;
+            for (Integer item : airport.landingTimes) {
+                landAvg += item;
+            }
+            landAvg = (landAvg / ((float) (airport.getLandingId() - 1) / 2));
+
+            float takeOffAvg = 0.0f;
+            for (Integer item : airport.takingOffTimes) {
+                takeOffAvg += item;
+            }
+            takeOffAvg = (takeOffAvg / ((float) (airport.getLandingId() - 1) / 2));
+
+            System.out.println("Média de espera por decolagem: " + takeOffAvg);
+            System.out.println("Média de espera por aterrissagem: " + landAvg);
+            System.out.println();
+
+            System.out.println("##################################################################");
+            System.out.print("Digite true para continuar o programa e false para parar:");
             response = scanner.nextBoolean();
         }
 

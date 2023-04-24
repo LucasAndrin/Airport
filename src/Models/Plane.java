@@ -2,15 +2,17 @@ package Models;
 
 public class Plane {
 
+    private int time;
+
     private int id;
 
     private int gas;
 
-    public Plane(int id) {
+    public Plane(int time, int id) {
         setId(id);
     }
 
-    public Plane(int id, int gas) {
+    public Plane(int time, int id, int gas) {
         setId(id);
         setGas(gas);
     }
@@ -29,6 +31,14 @@ public class Plane {
 
     public void setGas(int gas) {
         this.gas = gas;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     @Override

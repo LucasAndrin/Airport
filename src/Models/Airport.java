@@ -3,6 +3,8 @@ package Models;
 import lists.Knot;
 import lists.QueueList;
 
+import java.util.ArrayList;
+
 public class Airport {
 
     public int time = 0;
@@ -11,6 +13,10 @@ public class Airport {
 
     private int landingId = 1;
 
+    public ArrayList<Integer> takingOffTimes = new ArrayList<Integer>();
+
+    public ArrayList<Integer> landingTimes = new ArrayList<Integer>();
+
     private final Track primaryTrack = new Track();
 
     private final Track secondaryTrack = new Track();
@@ -18,7 +24,7 @@ public class Airport {
     public Airport() { }
 
     public Plane addPlaneLanding(int gas) {
-        Plane plane = new Plane(landingId, gas);
+        Plane plane = new Plane(time, landingId, gas);
         int primaryTrackLandingLength = primaryTrack.getLanding().getLength();
         int primaryTrackTakingOffLength = primaryTrack.getTakingOff().getLength();
 
@@ -42,7 +48,7 @@ public class Airport {
     }
 
     public Plane addPlaneTakingOff() {
-        Plane plane = new Plane(takingOffId);
+        Plane plane = new Plane(time, takingOffId);
         int primaryTrackLength = primaryTrack.getTakingOff().getLength() + primaryTrack.getLanding().getLength();
         int secondaryTrackLength = secondaryTrack.getTakingOff().getLength() + secondaryTrack.getLanding().getLength();
 
@@ -98,6 +104,7 @@ public class Airport {
 
         if (trackLessFuel != null) {
             Plane planeLessFuel = (Plane) trackLessFuel.getObject();
+            landingTimes.add(time - planeLessFuel.getTime());
             if (planeLessFuel.getGas() < 10 || track.getTakingOff().getLength() == 0) {
                 System.out.println(trackId + "ª Pista está pousando o avião: " + planeLessFuel);
                 landing.removeObj(trackLessFuel);
@@ -112,7 +119,9 @@ public class Airport {
         QueueList takingOff = track.getTakingOff();
         Knot start = takingOff.getStart();
         if (start != null) {
-            System.out.println(trackId + "º Pista está decolando o avião: " + start.getObject());
+            Plane planeTakingOff = (Plane) start.getObject();
+            takingOffTimes.add(time - planeTakingOff.getTime());
+            System.out.println(trackId + "º Pista está decolando o avião: " + planeTakingOff);
             takingOff.remove();
         }
     }
@@ -143,5 +152,13 @@ public class Airport {
 
     public void incrementLandingId() {
         landingId = landingId + 2;
+    }
+
+    public int getTakingOffId() {
+        return takingOffId;
+    }
+
+    public int getLandingId() {
+        return landingId;
     }
 }
